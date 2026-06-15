@@ -43,7 +43,7 @@ class MasroofiSmartApp extends StatelessWidget {
           systemOverlayStyle: SystemUiOverlayStyle.dark,
         ),
         navigationBarTheme: NavigationBarThemeData(
-          indicatorColor: seed.withOpacity(0.14),
+          indicatorColor: seed.withValues(alpha: 0.14),
           labelTextStyle: WidgetStateProperty.all(
             const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
           ),
@@ -571,7 +571,7 @@ class _RecordsView extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         DropdownButtonFormField<String?>(
-          value: filterCategory,
+          initialValue: filterCategory,
           decoration: const InputDecoration(labelText: 'التصنيف'),
           items: [
             const DropdownMenuItem<String?>(value: null, child: Text('كل التصنيفات')),
@@ -733,7 +733,7 @@ class _RecordFormSheetState extends State<_RecordFormSheet> {
                 ),
                 const SizedBox(height: 10),
                 DropdownButtonFormField<RecordType>(
-                  value: _type,
+                  initialValue: _type,
                   decoration: const InputDecoration(labelText: 'النوع'),
                   items: RecordType.values
                       .map((type) => DropdownMenuItem(value: type, child: Text(type.label)))
@@ -770,7 +770,8 @@ class _RecordFormSheetState extends State<_RecordFormSheet> {
                 ),
                 const SizedBox(height: 10),
                 DropdownButtonFormField<String>(
-                  value: _category,
+                  key: ValueKey(_type),
+                  initialValue: _category,
                   decoration: const InputDecoration(labelText: 'التصنيف'),
                   items: widget
                       .categoriesFor(_type)
@@ -933,7 +934,7 @@ class _RecordTile extends StatelessWidget {
               width: 42,
               height: 42,
               decoration: BoxDecoration(
-                color: record.type.color.withOpacity(0.12),
+                color: record.type.color.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(_iconFor(record.type), color: record.type.color),
