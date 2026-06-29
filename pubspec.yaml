@@ -1,8 +1,8 @@
 name: masroofi_smart
-description: Arabic offline personal finance manager.
+description: Arabic offline personal expense and obligations manager.
 publish_to: "none"
 
-version: 4.0.0+4
+version: 1.0.0+1
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
